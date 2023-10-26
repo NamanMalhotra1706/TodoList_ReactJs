@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 import TodoList from './components/TodoList'
 
 function App() {
@@ -11,5 +9,4 @@ function App() {
     </>
   )
 }
-
-export default App
+export default App;

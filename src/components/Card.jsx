@@ -1,10 +1,10 @@
 import React,{ useState } from "react"
 import EditTask from '../Modal/EditTask'
 
-const Card = ({taskObj, index, deleteTask , updateListArray }) => {
+const Card = ({taskObj, index, deleteTask , updateListArray, isCompletedScreen, completeTask}) => {
     
     const[showModal, setShowModal] = useState(false);
-
+    
     const colors = [
         {
             primaryColor : "#5D93E1",
@@ -40,10 +40,16 @@ const Card = ({taskObj, index, deleteTask , updateListArray }) => {
     const updateTask = (obj)=>{
         updateListArray(obj, index);
     }
+
+    const handleComplete = () =>{
+        console.log("Completed");
+        completeTask(index);
+    }
+       
     
   return (
     <>
-    <div className = "card-wrapper mr-5">
+    {isCompletedScreen === false && <div className = "card-wrapper mr-5">
         <div className = "card-top" style={{backgroundColor: colors[index%5].primaryColor}}></div>
             <div className = "task-holder">
                 <span className = "card-header" style={{backgroundColor: colors[index%5].secondaryColor, borderRadius: "10px"}}>{taskObj.taskName}</span>
@@ -51,12 +57,27 @@ const Card = ({taskObj, index, deleteTask , updateListArray }) => {
 
                 <div style={{"position": "absolute", "right" : "20px", "bottom" : "20px"}}>
                     <i className = "far fa-edit mr-3" style={{"color" : colors[index%5].primaryColor, "cursor" : "pointer"}} onClick={()=>{setShowModal(true)}}></i>
-                    <i className ="fas fa-trash-alt" style = {{"color" : colors[index%5].primaryColor, "cursor" : "pointer"}} onClick={handleDelete}></i>
+                    <i className ="fas fa-trash-alt mr-3" style = {{"color" : colors[index%5].primaryColor, "cursor" : "pointer"}} onClick={handleDelete}></i>
+                    <i className ="fas fa-check" style = {{"color" : colors[index%5].primaryColor, "cursor" : "pointer"}} onClick={handleComplete}></i>
                 </div>
         </div>
-        <EditTask showModal={showModal} toogle={toogle} updateTask={updateTask}  taskObj={taskObj}  />
+        <EditTask showModal={showModal} toogle={toogle} updateTask={updateTask} taskObj={taskObj}  />
     </div>
-      
+      }{
+        isCompletedScreen === true && <div className = "card-wrapper mr-5">
+        <div className = "card-top" style={{backgroundColor: colors[index%5].primaryColor}}></div>
+            <div className = "task-holder">
+                <span className = "card-header" style={{backgroundColor: colors[index%5].secondaryColor, borderRadius: "10px"}}>{taskObj.taskName}</span>
+                <p className = "mt-3">{taskObj.description}</p>
+                <div style={{"position": "absolute","left" : "20px", "bottom" : "20px"}}>
+                    <p>{taskObj.completedOn}</p>
+                </div>
+                <div style={{"position": "absolute", "right" : "20px", "bottom" : "20px"}}>
+                    <i className ="fas fa-trash-alt mr-3" style = {{"color" : colors[index%5].primaryColor, "cursor" : "pointer"}} onClick={handleDelete}></i>
+                </div>
+        </div>
+        </div>
+      }
     </>
   );
 };

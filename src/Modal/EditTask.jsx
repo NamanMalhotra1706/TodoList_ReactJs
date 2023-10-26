@@ -67,11 +67,11 @@ const EditTask = ({ showModal, toogle, taskObj, updateTask }) => {
                   <div className="relative p-8 flex-auto">
                     <form>
                     <div className="">
-                        <label for="base-input" className="text-md font-medium text-gray-900 dark:text-black">Task Name</label>
+                        <label htmlFor="base-input" className="text-md font-medium text-gray-900 dark:text-black">Task Name</label>
                         <input type="text" id="base-input" name='taskName' className="base-input" value={taskName} onChange={handleChange} />
                     </div>
                     <div className="mt-5">
-                        <label for="large-input" className="block mb-2 text-md font-medium text-gray-900 dark:text-black">Description</label>
+                        <label htmlFor="large-input" className="block mb-2 text-md font-medium text-gray-900 dark:text-black">Description</label>
                         <textarea id="large-input"  cols={500} rows={8} className="larger-input sm:text-md" value={description} onChange={handleChange}></textarea>
                     </div>
                     </form>

@@ -22,10 +22,21 @@ const TaskModal = ({showModal, toogle, save}) => {
     const handleSave =(e)=>{
         e.preventDefault();
         const newKey = `${taskName}-${Date.now()}`;
+        const date = new Date ();
+      var dd = date.getDate ();
+      var mm = date.getMonth () + 1;
+      var yyyy = date.getFullYear ();
+      var hh = date.getHours ();
+      var minutes = date.getMinutes ();
+      var ss = date.getSeconds ();
+      var finalDate =
+      dd + '-' + mm + '-' + yyyy + ' at ' + hh + ':' + minutes + ':' + ss;
+
         const taskObj = {
           key: newKey,
           taskName,
           description,
+          date : finalDate,
           };
         //console.log(taskObj);
         save(taskObj);
@@ -53,11 +64,11 @@ const TaskModal = ({showModal, toogle, save}) => {
                   <div className="relative p-8 flex-auto">
                     <form>
                     <div className="">
-                        <label for="base-input" className="text-md font-medium text-gray-900 dark:text-black">Task Name</label>
+                        <label htmlFor="base-input" className="text-md font-medium text-gray-900 dark:text-black">Task Name</label>
                         <input type="text" id="base-input" name='taskName' value={taskName} onChange={changeHandler} className="base-input" />
                     </div>
                     <div className="mt-5">
-                        <label for="large-input" className="block mb-2 text-md font-medium text-gray-900 dark:text-black">Description</label>
+                        <label htmlFor="large-input" className="block mb-2 text-md font-medium text-gray-900 dark:text-black">Description</label>
                         <textarea id="large-input" name='description' className="larger-input sm:text-md" value={description} onChange={changeHandler} cols={500} rows={8}></textarea>
                     </div>
                     </form>
