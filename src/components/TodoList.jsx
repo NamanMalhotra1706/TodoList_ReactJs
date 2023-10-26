@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import '../App.css'
-import TaskModal from '../Modal/taskModal'
+import TaskModal from '../Modal/TaskModal'
 import Card from './Card'
 
 const TodoList = () => {
