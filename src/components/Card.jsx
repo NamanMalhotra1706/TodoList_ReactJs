@@ -49,7 +49,7 @@ const Card = ({taskObj, index, deleteTask , updateListArray, isCompletedScreen, 
     
   return (
     <>
-    {isCompletedScreen === false && <div className = "card-wrapper mr-5">
+    {isCompletedScreen === false || <div className = "card-wrapper mr-5">
         <div className = "card-top" style={{backgroundColor: colors[index%5].primaryColor}}></div>
             <div className = "task-holder">
                 <span className = "card-header" style={{backgroundColor: colors[index%5].secondaryColor, borderRadius: "10px"}}>{taskObj.taskName}</span>
@@ -64,7 +64,7 @@ const Card = ({taskObj, index, deleteTask , updateListArray, isCompletedScreen, 
         <EditTask showModal={showModal} toogle={toogle} updateTask={updateTask} taskObj={taskObj}  />
     </div>
       }{
-        isCompletedScreen === true && <div className = "card-wrapper mr-5">
+        isCompletedScreen === true ||  <div className = "card-wrapper mr-5">
         <div className = "card-top" style={{backgroundColor: colors[index%5].primaryColor}}></div>
             <div className = "task-holder">
                 <span className = "card-header" style={{backgroundColor: colors[index%5].secondaryColor, borderRadius: "10px"}}>{taskObj.taskName}</span>

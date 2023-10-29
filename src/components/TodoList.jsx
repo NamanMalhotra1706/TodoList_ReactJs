@@ -36,11 +36,12 @@ const TodoList = () => {
 
     // Delete Task
     const deleteTask = (index) =>{
+      if(isCompletedScreen===false){
       const lists = [...taskList];
       lists.splice(index,1);
       localStorage.setItem('taskList',JSON.stringify(lists));
       setTaskList(lists);
-
+      }
       // Deleting Completed Task...
       if(isCompletedScreen===true){
         const completedlists = [...completedTodos];
